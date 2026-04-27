@@ -38,7 +38,7 @@ export const startSyncEngine = async () => {
 const syncBatch = async (batch: BatchRecord) => {
   try {
     while (true) {
-      const pendingRows = await getPendingRows(batch.batch_id, 200)
+      const pendingRows = await getPendingRows(batch.batch_id, 500)
       if (!pendingRows.length)
         return (
           await markBatchDone(batch.batch_id),
@@ -90,7 +90,7 @@ const syncBatch = async (batch: BatchRecord) => {
         )
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 500))
+      await new Promise((resolve) => setTimeout(resolve, 100))
     }
   } catch {
     await markBatchError(batch.batch_id)
