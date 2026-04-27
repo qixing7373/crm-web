@@ -90,7 +90,7 @@ const syncBatch = async (batch: BatchRecord) => {
         )
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 100))
+      await new Promise((resolve) => setTimeout(resolve, 500))
     }
   } catch {
     await markBatchError(batch.batch_id)
